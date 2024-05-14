@@ -116,6 +116,15 @@ OrderedMap.prototype = {
     return result
   },
 
+  // :: ((key: string, value: any) → [string, any]) → OrderedMap
+  // Create a new map by calling the given function for each key/value
+  // pair in the map in order, and replacing with updated values.
+  map: function(f) {
+    var content = []
+    this.forEach(function(key, value) { content.push(...f(key, value)) })
+    return new OrderedMap(content)
+  },
+
   // :: number
   // The amount of keys in this map.
   get size() {
