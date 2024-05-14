@@ -23,6 +23,8 @@ declare class OrderedMap<T = any> {
 
   toObject(): Record<string, T>;
 
+  map(fn: (key: string, value: T) => [string, T]): OrderedMap<T>
+
   readonly size: number
 
   static from<T>(map: MapLike<T>): OrderedMap<T>
